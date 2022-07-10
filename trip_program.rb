@@ -1,15 +1,15 @@
 #旅行プログラムを作成する
 #プランの選択
 plans = [
-    {:destination => "沖縄旅行", :price => 10000},
-    {:destination => "北海道旅行", :price => 20000},
-    {:destination => "九州旅行", :price => 15000}
+    {destination: "沖縄旅行", price: 10_000},
+    {destination: "北海道旅行", price: 20_000},
+    {destination: "九州旅行", price: 15_000}
 ]
 
 def choose_plan(plans)
     puts "旅行プランを選択してください。"
-    plans.each_with_index do |plan, i|
-        puts "#{i+1}. #{plan[:destination]}（#{plan[:price]}円）"
+    plans.each.with_index(1) do |plan, i|
+        puts "#{i}. #{plan[:destination]}（#{plan[:price]}円）"
     end
     #異常入力の時は再入力
     while true
@@ -42,12 +42,12 @@ end
 #金額計算
 def calculate_total_price(plans,people_num, price_tour)
     puts "#{people_num}名ですね。"
-    tortal_price = price_tour * people_num
+    total_price = price_tour * people_num
     if people_num >= 5
-        tortal_price *= 0.9
+        total_price *= 0.9
         puts "5名以上ですので10%割引となります"
     end
-    puts "合計金額は#{tortal_price.round}円になります。"
+    puts "合計金額は#{total_price.round}円になります。"
 end
 
 select_num = choose_plan(plans)
